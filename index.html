@@ -411,7 +411,7 @@
             <h2 id="formTitle">छात्रवृत्ति आवेदन फॉर्म</h2>
             
             <form action="https://api.web3forms.com/submit" method="POST" id="scholarshipForm">
-                <!-- Aapki Generated Web3Forms Key -->
+                <!-- Web3Forms Key -->
                 <input type="hidden" name="access_key" value="7c259580-b705-48c4-a22a-43db5f2c62bc">
                 <input type="hidden" name="subject" value="New Scholarship Application Submitted">
                 <input type="hidden" name="from_name" value="UP Scholarship Portal">
@@ -482,7 +482,7 @@
             <h3>आवेदन स्थिति (Check Application Status)</h3>
             <div class="form-group" style="margin-top: 15px;">
                 <label>रजिस्ट्रेशन नंबर दर्ज करें:</label>
-                <input type="text" id="statusRegNo" placeholder="Reg. No. e.g. UP2026889">
+                <input type="text" id="statusRegNo" placeholder="जैसे: UP2026889">
             </div>
             <button class="btn btn-green" onclick="checkStatus()">स्थिति जांचें (Check Status)</button>
             <p id="statusResult" style="margin-top: 15px; font-weight: bold;"></p>
@@ -570,13 +570,17 @@
             }
         }
 
+        /* Updated Check Status Logic */
         function checkStatus() {
-            let regNo = document.getElementById('statusRegNo').value;
+            let regNo = document.getElementById('statusRegNo').value.trim();
             let result = document.getElementById('statusResult');
             
-            if (regNo.trim() === '') {
+            if (regNo === '') {
                 result.style.color = 'red';
-                result.innerText = 'कृपया मान्य रजिस्ट्रेशन नंबर दर्ज करें!';
+                result.innerText = 'कृपया अपना रजिस्ट्रेशन नंबर दर्ज करें!';
+            } else if (regNo.length < 8) {
+                result.style.color = 'red';
+                result.innerText = 'अमान्य रजिस्ट्रेशन नंबर! (कम से कम 8 अक्षर दर्ज करें)';
             } else {
                 result.style.color = 'green';
                 result.innerText = 'रजिस्ट्रेशन नंबर ' + regNo + ' का आवेदन सत्यापन हेतु विचाराधीन है (Under Process)।';
