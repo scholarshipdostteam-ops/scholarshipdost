@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>छात्रवृत्ति एवं शुल्क प्रतिपूर्ति ऑनलाइन प्रणाली</title>
+    <title>Scholarship & Fee Reimbursement Online System</title>
     <style>
         * {
             margin: 0;
@@ -260,6 +260,9 @@
         .btn-blue { background: #0d6efd; }
         .btn-blue:hover { background: #0b5ed7; }
 
+        .btn-orange { background: #fd7e14; }
+        .btn-orange:hover { background: #e06d10; }
+
         /* Modal Popup */
         .modal {
             display: none;
@@ -274,7 +277,7 @@
 
         .modal-content {
             background-color: white;
-            margin: 5% auto;
+            margin: 4% auto;
             padding: 25px;
             border-radius: 8px;
             width: 90%;
@@ -334,6 +337,15 @@
             background: #002244;
         }
 
+        .edit-box {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border: 1px solid #0055a5;
+            background: #eef6ff;
+            border-radius: 6px;
+        }
+
         @media(max-width: 768px) {
             .main-content { flex-direction: column; }
             .banner-box { flex-direction: column; }
@@ -346,8 +358,8 @@
     <!-- Top Header Bar -->
     <div class="top-bar">
         <div class="logo-title">
-            <h2>छात्रवृत्ति एवं शुल्क प्रतिपूर्ति ऑनलाइन प्रणाली</h2>
-            <p>उत्तर प्रदेश सरकार (Scholarship & Fee Reimbursement Online System)</p>
+            <h2>Online Scholarship & Fee Reimbursement System</h2>
+            <p>Government of Uttar Pradesh Portal</p>
         </div>
         <div class="gov-tag">UP GOVT PORTAL</div>
     </div>
@@ -355,12 +367,12 @@
     <!-- Navigation Menu -->
     <header>
         <nav class="navbar">
-            <a class="nav-link active" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">मुख्य पृष्ठ</a>
-            <a class="nav-link" onclick="document.getElementById('scholarship-schemes').scrollIntoView({behavior: 'smooth'});">स्टूडेंट कॉर्नर</a>
-            <a class="nav-link" onclick="openModal('instituteModal')">संस्थान (Institute)</a>
-            <a class="nav-link" onclick="openModal('reportModal')">रिपोर्ट</a>
-            <a class="nav-link" onclick="openModal('statusModal')">स्टेटस</a>
-            <a class="nav-link" onclick="openModal('helpModal')">हेल्पलाइन</a>
+            <a class="nav-link active" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Home</a>
+            <a class="nav-link" onclick="document.getElementById('scholarship-schemes').scrollIntoView({behavior: 'smooth'});">Student Corner</a>
+            <a class="nav-link" onclick="openModal('instituteModal')">Institute Login</a>
+            <a class="nav-link" onclick="openModal('reportModal')">Reports</a>
+            <a class="nav-link" onclick="openModal('statusModal')">Check Status</a>
+            <a class="nav-link" onclick="openModal('helpModal')">Helpline</a>
         </nav>
     </header>
 
@@ -368,8 +380,8 @@
     <div class="container main-content">
         <div class="banner-box">
             <div class="banner-text">
-                <h1>सब पढ़ें, सब आगे बढ़ें</h1>
-                <p>उत्तर प्रदेश सरकार राज्य के मेधावी एवं जरूरतमंद विद्यार्थियों की शिक्षा में आर्थिक सहायता प्रदान करने हेतु 500 से अधिक पाठ्यक्रमों के लिए छात्रवृत्ति की सुविधा प्रदान करती है।</p>
+                <h1>Scholarship Portal Session 2026-27</h1>
+                <p>Providing financial support and scholarships to deserving students across 500+ courses in Uttar Pradesh.</p>
             </div>
             <div class="banner-img">
                 <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Students">
@@ -377,30 +389,30 @@
         </div>
 
         <div class="sidebar-help">
-            <h3>सहायता एवं संपर्क (Support)</h3>
-            <p><strong>आधिकारिक सहायता:</strong> छात्रवृत्ति सहायता केंद्र</p>
-            <p><strong>ईमेल (Gmail):</strong> scholarshipdost.team@gmail.com</p>
-            <p><strong>पोर्टल स्थिति:</strong> ऑनलाइन आवेदन सक्रिय</p>
+            <h3>Help & Support</h3>
+            <p><strong>Support Center:</strong> UP Scholarship Cell</p>
+            <p><strong>Email:</strong> scholarshipdost.team@gmail.com</p>
+            <p><strong>Portal Status:</strong> Applications Active</p>
         </div>
     </div>
 
     <div class="alert-bar">
-        <span>महत्वपूर्ण सूचना:</span> छात्रवृत्ति आवेदन के सभी 500+ पाठ्यक्रमों के लिंक ऑनलाइन सक्रिय कर दिए गए हैं।
+        <span>Notice:</span> Online application links for all 500+ courses are live now.
     </div>
 
     <!-- Scholarship Schemes Grid -->
     <div class="container" id="scholarship-schemes">
         <div class="section-title">
-            <h3>छात्रवृत्ति आवेदन श्रेणियां (Scholarship Schemes)</h3>
-            <span class="badge">कुल योजनाएं: 520+</span>
+            <h3>Scholarship Schemes Category</h3>
+            <span class="badge">Active Schemes: 520+</span>
         </div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" onkeyup="filterSchemes()" placeholder="500+ पाठ्यक्रमों में खोजें (Search e.g. B.Tech, Class 10, ITI, B.Sc, Diploma)...">
+            <input type="text" id="searchInput" onkeyup="filterSchemes()" placeholder="Search in 500+ courses (e.g. B.Tech, Class 10, ITI, B.Sc, Diploma)...">
         </div>
 
         <div class="grid-container" id="schemesGrid">
-            <!-- Courses Javascript se load honge -->
+            <!-- Dynamic Courses Load -->
         </div>
     </div>
 
@@ -408,47 +420,47 @@
     <div id="formModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('formModal')">&times;</span>
-            <h2 id="formTitle">छात्रवृत्ति आवेदन फॉर्म</h2>
+            <h2 id="formTitle">Scholarship Application Form</h2>
             
-            <form action="https://api.web3forms.com/submit" method="POST" id="scholarshipForm">
-                <!-- Web3Forms Key -->
+            <form action="https://api.web3forms.com/submit" method="POST" id="scholarshipForm" onsubmit="handleFormSubmit(event)">
                 <input type="hidden" name="access_key" value="7c259580-b705-48c4-a22a-43db5f2c62bc">
                 <input type="hidden" name="subject" value="New Scholarship Application Submitted">
                 <input type="hidden" name="from_name" value="UP Scholarship Portal">
                 <input type="hidden" name="Selected_Course" id="formCourseInput">
                 <input type="hidden" name="Application_Type" id="formTypeInput">
+                <input type="hidden" id="editRegNum">
 
                 <div class="form-group">
-                    <label>विद्यार्थी का नाम (Student Name): *</label>
-                    <input type="text" name="Student_Name" placeholder="पूरा नाम दर्ज करें" required>
+                    <label>Student Full Name: *</label>
+                    <input type="text" name="Student_Name" id="s_name" placeholder="Enter Full Name" required>
                 </div>
 
                 <div class="form-group">
-                    <label>पिता का नाम (Father's Name): *</label>
-                    <input type="text" name="Father_Name" placeholder="पिता का नाम दर्ज करें" required>
+                    <label>Father's Name: *</label>
+                    <input type="text" name="Father_Name" id="s_father" placeholder="Enter Father's Name" required>
                 </div>
 
                 <div class="form-group">
-                    <label>मोबाइल नंबर (Mobile Number): *</label>
-                    <input type="tel" name="Mobile_Number" pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल नंबर" required>
+                    <label>Mobile Number: *</label>
+                    <input type="tel" name="Mobile_Number" id="s_mobile" pattern="[0-9]{10}" placeholder="10-digit Mobile Number" required>
                 </div>
 
                 <div class="form-group">
-                    <label>ईमेल आईडी (Email Address): *</label>
-                    <input type="email" name="Student_Email" placeholder="example@gmail.com" required>
+                    <label>Email Address: *</label>
+                    <input type="email" name="Student_Email" id="s_email" placeholder="example@gmail.com" required>
                 </div>
 
                 <div class="form-group">
-                    <label>आधार कार्ड नंबर (Aadhaar Number): *</label>
-                    <input type="text" name="Aadhaar_Number" pattern="[0-9]{12}" placeholder="12 अंकों का आधार नंबर" required>
+                    <label>Aadhaar Card Number: *</label>
+                    <input type="text" name="Aadhaar_Number" id="s_aadhaar" pattern="[0-9]{12}" placeholder="12-digit Aadhaar Number" required>
                 </div>
 
                 <div class="form-group">
-                    <label>वार्षिक आय (Annual Income in ₹): *</label>
-                    <input type="number" name="Annual_Income" placeholder="जैसे: 50000" required>
+                    <label>Annual Income (₹): *</label>
+                    <input type="number" name="Annual_Income" id="s_income" placeholder="e.g. 50000" required>
                 </div>
 
-                <button type="submit" class="submit-btn">आवेदन जमा करें (Submit Form)</button>
+                <button type="submit" class="submit-btn" id="formSubmitBtn">Submit Application</button>
             </form>
         </div>
     </div>
@@ -457,48 +469,54 @@
     <div id="instituteModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('instituteModal')">&times;</span>
-            <h3>संस्थान (Institute Portal)</h3>
-            <p style="margin-top:10px;">उत्तर प्रदेश के मान्यता प्राप्त सभी स्कूल, कॉलेज और विश्वविद्यालय यहाँ से लॉग इन कर सकते हैं।</p>
+            <h3>Institute Login Portal</h3>
+            <p style="margin-top:10px; font-size:14px;">Recognized schools, colleges, and universities in UP can log in here for student verification.</p>
             <br>
-            <button class="btn btn-blue" onclick="alert('संस्थान पोर्टल सक्रिय है। ऑनलाइन सत्यापन जारी है।')">Institute Verification</button>
+            <button class="btn btn-blue" onclick="alert('Institute Login Portal is active.')">Institute Login</button>
         </div>
     </div>
 
     <div id="reportModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('reportModal')">&times;</span>
-            <h3>छात्रवृत्ति रिपोर्ट (Summary Report)</h3>
-            <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.8;">
-                <li><strong>कुल पंजीकृत छात्र:</strong> 1,24,580</li>
-                <li><strong>स्वीकृत आवेदन:</strong> 98,420</li>
-                <li><strong>कुल वितरित छात्रवृत्ति:</strong> ₹ 45,20,00,000</li>
+            <h3>Scholarship Summary Report</h3>
+            <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.8; font-size:14px;">
+                <li><strong>Registered Applicants:</strong> 1,24,580</li>
+                <li><strong>Verified Applications:</strong> 98,420</li>
+                <li><strong>Total Amount Disbursed:</strong> ₹ 45,20,00,000</li>
             </ul>
         </div>
     </div>
 
+    <!-- Status & Edit Modal -->
     <div id="statusModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('statusModal')">&times;</span>
-            <h3>आवेदन स्थिति (Check Application Status)</h3>
+            <h3>Check Application Status & Edit</h3>
             <div class="form-group" style="margin-top: 15px;">
-                <label>रजिस्ट्रेशन नंबर दर्ज करें:</label>
-                <input type="text" id="statusRegNo" placeholder="जैसे: UP2026889">
+                <label>Enter Registration Number:</label>
+                <input type="text" id="statusRegNo" placeholder="e.g. UP2026-1084">
             </div>
-            <button class="btn btn-green" onclick="checkStatus()">स्थिति जांचें (Check Status)</button>
-            <p id="statusResult" style="margin-top: 15px; font-weight: bold;"></p>
+            
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-green" onclick="checkStatus()">Check Status</button>
+                <button class="btn btn-orange" onclick="editFormByReg()">Edit Form</button>
+            </div>
+
+            <p id="statusResult" style="margin-top: 15px; font-weight: bold; line-height: 1.5; font-size: 14px;"></p>
         </div>
     </div>
 
     <div id="helpModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('helpModal')">&times;</span>
-            <h3>सहायता केंद्र (Helpline)</h3>
-            <p style="margin-top: 12px;"><strong>ईमेल:</strong> scholarshipdost.team@gmail.com</p>
-            <p style="margin-top: 8px;"><strong>कार्य समय:</strong> सोमवार से शनिवार (प्रातः 10:00 से सायं 5:00 बजे तक)</p>
+            <h3>Helpline Center</h3>
+            <p style="margin-top: 12px; font-size:14px;"><strong>Email:</strong> scholarshipdost.team@gmail.com</p>
+            <p style="margin-top: 8px; font-size:14px;"><strong>Working Hours:</strong> Mon - Sat (10:00 AM - 05:00 PM)</p>
         </div>
     </div>
 
-    <!-- Complete Integrated JavaScript -->
+    <!-- JavaScript Logic -->
     <script>
         function openModal(id) {
             document.getElementById(id).style.display = 'block';
@@ -509,6 +527,9 @@
         }
 
         function openApplyForm(course, type) {
+            document.getElementById('scholarshipForm').reset();
+            document.getElementById('editRegNum').value = "";
+            document.getElementById('formSubmitBtn').innerText = "Submit Application";
             document.getElementById('formTitle').innerText = course + ' (' + type + ' Apply)';
             document.getElementById('formCourseInput').value = course;
             document.getElementById('formTypeInput').value = type;
@@ -542,7 +563,7 @@
                     html += `
                         <div class="card">
                             <h4>${fullCourseName}</h4>
-                            <p>छात्रवृत्ति आवेदन सत्र 2026-27 | कोड: #${1000 + count}</p>
+                            <p>Scholarship Session 2026-27 | Code: #${1000 + count}</p>
                             <div class="btn-group">
                                 <button class="btn btn-green" onclick="openApplyForm('${fullCourseName}', 'Fresh')">Fresh Apply</button>
                                 <button class="btn btn-blue" onclick="openApplyForm('${fullCourseName}', 'Renewal')">Renewal</button>
@@ -570,21 +591,81 @@
             }
         }
 
-        /* Updated Check Status Logic */
+        /* Full Storage & Edit System */
+        function handleFormSubmit(event) {
+            let editReg = document.getElementById('editRegNum').value;
+            let db = JSON.parse(localStorage.getItem('scholarship_records')) || {};
+
+            let regNum = editReg ? editReg : 'UP2026-' + Math.floor(1000 + Math.random() * 9000);
+
+            db[regNum] = {
+                name: document.getElementById('s_name').value,
+                father: document.getElementById('s_father').value,
+                mobile: document.getElementById('s_mobile').value,
+                email: document.getElementById('s_email').value,
+                aadhaar: document.getElementById('s_aadhaar').value,
+                income: document.getElementById('s_income').value,
+                course: document.getElementById('formCourseInput').value,
+                type: document.getElementById('formTypeInput').value,
+                status: 'Under Verification'
+            };
+
+            localStorage.setItem('scholarship_records', JSON.stringify(db));
+
+            if(editReg) {
+                alert('Application Updated Successfully!\nRegistration No: ' + regNum);
+            } else {
+                alert('Application Submitted Successfully!\n\nYour Registration Number is: ' + regNum + '\n\nPlease save this Registration Number to check status or edit details later.');
+            }
+        }
+
         function checkStatus() {
             let regNo = document.getElementById('statusRegNo').value.trim();
             let result = document.getElementById('statusResult');
-            
+            let db = JSON.parse(localStorage.getItem('scholarship_records')) || {};
+
             if (regNo === '') {
                 result.style.color = 'red';
-                result.innerText = 'कृपया अपना रजिस्ट्रेशन नंबर दर्ज करें!';
-            } else if (regNo.length < 8) {
-                result.style.color = 'red';
-                result.innerText = 'अमान्य रजिस्ट्रेशन नंबर! (कम से कम 8 अक्षर दर्ज करें)';
-            } else {
-                result.style.color = 'green';
-                result.innerText = 'रजिस्ट्रेशन नंबर ' + regNo + ' का आवेदन सत्यापन हेतु विचाराधीन है (Under Process)।';
+                result.innerText = 'Please enter a Registration Number!';
+                return;
             }
+
+            if (db[regNo]) {
+                let user = db[regNo];
+                result.style.color = 'green';
+                result.innerText = `Status for ${regNo}: Application (${user.course}) submitted by ${user.name} is currently ${user.status}.`;
+            } else {
+                result.style.color = 'red';
+                result.innerText = 'Invalid Registration Number! No record found in system.';
+            }
+        }
+
+        function editFormByReg() {
+            let regNo = document.getElementById('statusRegNo').value.trim();
+            let db = JSON.parse(localStorage.getItem('scholarship_records')) || {};
+
+            if (!regNo || !db[regNo]) {
+                alert('Invalid Registration Number! Cannot load form details.');
+                return;
+            }
+
+            let data = db[regNo];
+            closeModal('statusModal');
+
+            document.getElementById('s_name').value = data.name;
+            document.getElementById('s_father').value = data.father;
+            document.getElementById('s_mobile').value = data.mobile;
+            document.getElementById('s_email').value = data.email;
+            document.getElementById('s_aadhaar').value = data.aadhaar;
+            document.getElementById('s_income').value = data.income;
+            document.getElementById('formCourseInput').value = data.course;
+            document.getElementById('formTypeInput').value = data.type;
+            
+            document.getElementById('editRegNum').value = regNo;
+            document.getElementById('formTitle').innerText = 'Edit Application (' + regNo + ')';
+            document.getElementById('formSubmitBtn').innerText = 'Update Application Data';
+
+            openModal('formModal');
         }
 
         window.onclick = function(event) {
