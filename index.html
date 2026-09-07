@@ -4,7 +4,341 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>छात्रवृत्ति एवं शुल्क प्रतिपूर्ति ऑनलाइन प्रणाली</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Top Header */
+        .top-bar {
+            background: linear-gradient(135deg, #003366, #0055a5);
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo-title h2 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo-title p {
+            font-size: 13px;
+            color: #dce7f5;
+            margin-top: 2px;
+        }
+
+        .gov-tag {
+            background: #ff9933;
+            color: #000;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: #002244;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5%;
+            border-bottom: 3px solid #ff9933;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #ff9933;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .banner-box {
+            flex: 3;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            align-items: center;
+        }
+
+        .banner-text {
+            flex: 2;
+            padding-right: 20px;
+        }
+
+        .banner-text h1 {
+            color: #003366;
+            margin-bottom: 12px;
+            font-size: 24px;
+        }
+
+        .banner-text p {
+            line-height: 1.6;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .banner-img {
+            flex: 1;
+            height: 200px;
+        }
+
+        .banner-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .sidebar-help {
+            flex: 1;
+            background: #ffffff;
+            border-top: 4px solid #0055a5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .sidebar-help h3 {
+            color: #003366;
+            font-size: 16px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        .sidebar-help p {
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        /* Alert Bar */
+        .alert-bar {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .alert-bar span {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        /* Course Schemes Section */
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .section-title h3 {
+            color: #003366;
+            font-size: 18px;
+        }
+
+        .badge {
+            background: #198754;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #003366;
+            border-radius: 6px;
+            font-size: 15px;
+            margin-bottom: 20px;
+            outline: none;
+            background: white;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid #0055a5;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: #003366;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.2s;
+        }
+
+        .btn-green { background: #198754; }
+        .btn-green:hover { background: #146c43; }
+
+        .btn-blue { background: #0d6efd; }
+        .btn-blue:hover { background: #0b5ed7; }
+
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 4% auto;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 480px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close:hover { color: #000; }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background: white;
+            color: #333;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #003366;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #002244;
+        }
+
+        @media(max-width: 768px) {
+            .main-content { flex-direction: column; }
+            .banner-box { flex-direction: column; }
+            .banner-text { padding-right: 0; margin-bottom: 15px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -22,10 +356,10 @@
         <nav class="navbar">
             <a href="#" class="nav-link active">मुख्य पृष्ठ</a>
             <a href="#scholarship-schemes" class="nav-link">स्टूडेंट कॉर्नर</a>
-            <a href="#" class="nav-link" onclick="openModal('instituteModal')">संस्थान (Institute)</a>
-            <a href="#" class="nav-link" onclick="openModal('reportModal')">रिपोर्ट</a>
-            <a href="#" class="nav-link" onclick="openModal('statusModal')">स्टेटस</a>
-            <a href="#" class="nav-link" onclick="openModal('helpModal')">हेल्पलाइन</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="openModal('instituteModal')">संस्थान (Institute)</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="openModal('reportModal')">रिपोर्ट</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="openModal('statusModal')">स्टेटस</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="openModal('helpModal')">हेल्पलाइन</a>
         </nav>
     </header>
 
@@ -50,58 +384,22 @@
     </div>
 
     <div class="alert-bar">
-        <span>महत्वपूर्ण सूचना:</span> छात्रवृत्ति आवेदन के सभी लिंक ऑनलाइन सक्रिय कर दिए गए हैं।
+        <span>महत्वपूर्ण सूचना:</span> छात्रवृत्ति आवेदन के सभी 500+ पाठ्यक्रमों के लिंक ऑनलाइन सक्रिय कर दिए गए हैं।
     </div>
 
     <!-- Scholarship Schemes Grid -->
     <div class="container" id="scholarship-schemes">
         <div class="section-title">
             <h3>छात्रवृत्ति आवेदन श्रेणियां (Scholarship Schemes)</h3>
-            <span class="badge">कुल योजनाएं: 520</span>
+            <span class="badge">कुल योजनाएं: 520+</span>
         </div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" onkeyup="filterSchemes()" placeholder="500+ पाठ्यक्रमों में खोजें (Search e.g. B.Tech, Class 10, B.Sc)...">
+            <input type="text" id="searchInput" onkeyup="filterSchemes()" placeholder="500+ पाठ्यक्रमों में खोजें (Search e.g. B.Tech, Class 10, ITI, B.Sc, Diploma)...">
         </div>
 
         <div class="grid-container" id="schemesGrid">
-            
-            <div class="card">
-                <h4>दशमोत्तर (Post-Matric Inter Class 11)</h4>
-                <p>कक्षा 11 वीं (Arts, Science, Commerce) छात्रवृत्ति।</p>
-                <div class="btn-group">
-                    <button class="btn btn-green" onclick="openApplyForm('Class 11', 'Fresh')">Fresh Apply</button>
-                    <button class="btn btn-blue" onclick="openApplyForm('Class 11', 'Renewal')">Renewal</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>दशमोत्तर (Post-Matric Inter Class 12)</h4>
-                <p>कक्षा 12 वीं (Arts, Science, Commerce) छात्रवृत्ति।</p>
-                <div class="btn-group">
-                    <button class="btn btn-green" onclick="openApplyForm('Class 12', 'Fresh')">Fresh Apply</button>
-                    <button class="btn btn-blue" onclick="openApplyForm('Class 12', 'Renewal')">Renewal</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>B.Tech Computer Science (Year 1)</h4>
-                <p>बी.टेक कंप्यूटर साइंस - वर्ष 1 के अध्ययनरत छात्रों हेतु।</p>
-                <div class="btn-group">
-                    <button class="btn btn-green" onclick="openApplyForm('B.Tech Year 1', 'Fresh')">Fresh Apply</button>
-                    <button class="btn btn-blue" onclick="openApplyForm('B.Tech Year 1', 'Renewal')">Renewal</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>B.Tech Computer Science (Year 2)</h4>
-                <p>बी.टेक कंप्यूटर साइंस - वर्ष 2 के अध्ययनरत छात्रों हेतु।</p>
-                <div class="btn-group">
-                    <button class="btn btn-green" onclick="openApplyForm('B.Tech Year 2', 'Fresh')">Fresh Apply</button>
-                    <button class="btn btn-blue" onclick="openApplyForm('B.Tech Year 2', 'Renewal')">Renewal</button>
-                </div>
-            </div>
-
+            <!-- Dynamic Courses Javascript se load honge -->
         </div>
     </div>
 
@@ -199,7 +497,6 @@
         </div>
     </div>
 
-    <!-- Alag se JavaScript file link karein -->
     <script src="javascript.js"></script>
 </body>
 </html>
