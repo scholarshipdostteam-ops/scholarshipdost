@@ -65,6 +65,7 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
+            cursor: pointer;
             transition: 0.3s;
         }
 
@@ -115,7 +116,7 @@
 
         .banner-img {
             flex: 1;
-            height: 200px;
+            height: 180px;
         }
 
         .banner-img img {
@@ -273,7 +274,7 @@
 
         .modal-content {
             background-color: white;
-            margin: 4% auto;
+            margin: 5% auto;
             padding: 25px;
             border-radius: 8px;
             width: 90%;
@@ -354,12 +355,12 @@
     <!-- Navigation Menu -->
     <header>
         <nav class="navbar">
-            <a href="#" class="nav-link active">मुख्य पृष्ठ</a>
-            <a href="#scholarship-schemes" class="nav-link">स्टूडेंट कॉर्नर</a>
-            <a href="javascript:void(0)" class="nav-link" onclick="openModal('instituteModal')">संस्थान (Institute)</a>
-            <a href="javascript:void(0)" class="nav-link" onclick="openModal('reportModal')">रिपोर्ट</a>
-            <a href="javascript:void(0)" class="nav-link" onclick="openModal('statusModal')">स्टेटस</a>
-            <a href="javascript:void(0)" class="nav-link" onclick="openModal('helpModal')">हेल्पलाइन</a>
+            <a class="nav-link active" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">मुख्य पृष्ठ</a>
+            <a class="nav-link" onclick="document.getElementById('scholarship-schemes').scrollIntoView({behavior: 'smooth'});">स्टूडेंट कॉर्नर</a>
+            <a class="nav-link" onclick="openModal('instituteModal')">संस्थान (Institute)</a>
+            <a class="nav-link" onclick="openModal('reportModal')">रिपोर्ट</a>
+            <a class="nav-link" onclick="openModal('statusModal')">स्टेटस</a>
+            <a class="nav-link" onclick="openModal('helpModal')">हेल्पलाइन</a>
         </nav>
     </header>
 
@@ -399,7 +400,7 @@
         </div>
 
         <div class="grid-container" id="schemesGrid">
-            <!-- Dynamic Courses Javascript se load honge -->
+            <!-- Courses Javascript se load honge -->
         </div>
     </div>
 
@@ -467,10 +468,10 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('reportModal')">&times;</span>
             <h3>छात्रवृत्ति रिपोर्ट (Summary Report)</h3>
-            <ul style="margin-top: 10px; padding-left: 20px; line-height: 1.8;">
-                <li>कुल पंजीकृत छात्र: 1,24,580</li>
-                <li>स्वीकृत आवेदन: 98,420</li>
-                <li>कुल वितरित छात्रवृत्ति: ₹ 45,20,00,000</li>
+            <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>कुल पंजीकृत छात्र:</strong> 1,24,580</li>
+                <li><strong>स्वीकृत आवेदन:</strong> 98,420</li>
+                <li><strong>कुल वितरित छात्रवृत्ति:</strong> ₹ 45,20,00,000</li>
             </ul>
         </div>
     </div>
@@ -492,11 +493,108 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('helpModal')">&times;</span>
             <h3>सहायता केंद्र (Helpline)</h3>
-            <p style="margin-top: 10px;"><strong>ईमेल:</strong> scholarshipdost.team@gmail.com</p>
-            <p style="margin-top: 5px;"><strong>कार्य समय:</strong> सोमवार से शनिवार (प्रातः 10:00 से सायं 5:00 बजे तक)</p>
+            <p style="margin-top: 12px;"><strong>ईमेल:</strong> scholarshipdost.team@gmail.com</p>
+            <p style="margin-top: 8px;"><strong>कार्य समय:</strong> सोमवार से शनिवार (प्रातः 10:00 से सायं 5:00 बजे तक)</p>
         </div>
     </div>
 
-    <script src="javascript.js"></script>
+    <!-- Complete Integrated JavaScript -->
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function openApplyForm(course, type) {
+            document.getElementById('formTitle').innerText = course + ' (' + type + ' Apply)';
+            document.getElementById('formCourseInput').value = course;
+            document.getElementById('formTypeInput').value = type;
+            openModal('formModal');
+        }
+
+        const categories = [
+            "Class 9", "Class 10", "Class 11", "Class 12",
+            "ITI Fitter", "ITI Electrician", "ITI Welder", "ITI COPA", "ITI Motor Mechanic",
+            "Polytechnic Civil", "Polytechnic Mechanical", "Polytechnic Electrical", "Polytechnic CS", "Polytechnic Electronics",
+            "B.A. (Hindi)", "B.A. (English)", "B.A. (History)", "B.A. (Pol Sci)", "B.A. (Sociology)", "B.A. (Economics)",
+            "B.Sc (Maths)", "B.Sc (Bio)", "B.Sc (Physics)", "B.Sc (Chemistry)", "B.Sc (CS)", "B.Sc (Agriculture)",
+            "B.Com (General)", "B.Com (Honours)", "BBA", "BCA", "B.Ed", "D.El.Ed (BTC)",
+            "B.Tech (CS)", "B.Tech (IT)", "B.Tech (Mechanical)", "B.Tech (Civil)", "B.Tech (Electrical)", "B.Tech (EC)",
+            "M.A.", "M.Sc", "M.Com", "M.Tech", "MCA", "MBA", "MBBS", "BAMS", "BHMS", "B.Pharm", "D.Pharm", "GNM", "ANM", "B.Sc Nursing",
+            "LL.B.", "B.A. LL.B.", "LL.M.", "Ph.D"
+        ];
+
+        function generate500Schemes() {
+            const grid = document.getElementById('schemesGrid');
+            if (!grid) return;
+            
+            let html = '';
+            let count = 1;
+
+            for (let i = 0; i < 10; i++) {
+                categories.forEach(course => {
+                    let yearText = (i === 0) ? "1st Year / Sem 1" : (i + 1) + "th Year / Stage " + (i + 1);
+                    let fullCourseName = course + " (" + yearText + ")";
+
+                    html += `
+                        <div class="card">
+                            <h4>${fullCourseName}</h4>
+                            <p>छात्रवृत्ति आवेदन सत्र 2026-27 | कोड: #${1000 + count}</p>
+                            <div class="btn-group">
+                                <button class="btn btn-green" onclick="openApplyForm('${fullCourseName}', 'Fresh')">Fresh Apply</button>
+                                <button class="btn btn-blue" onclick="openApplyForm('${fullCourseName}', 'Renewal')">Renewal</button>
+                            </div>
+                        </div>
+                    `;
+                    count++;
+                });
+            }
+
+            grid.innerHTML = html;
+        }
+
+        function filterSchemes() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h4')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        function checkStatus() {
+            let regNo = document.getElementById('statusRegNo').value;
+            let result = document.getElementById('statusResult');
+            
+            if (regNo.trim() === '') {
+                result.style.color = 'red';
+                result.innerText = 'कृपया मान्य रजिस्ट्रेशन नंबर दर्ज करें!';
+            } else {
+                result.style.color = 'green';
+                result.innerText = 'रजिस्ट्रेशन नंबर ' + regNo + ' का आवेदन सत्यापन हेतु विचाराधीन है (Under Process)।';
+            }
+        }
+
+        window.onclick = function(event) {
+            let modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            generate500Schemes();
+        });
+    </script>
 </body>
 </html>
