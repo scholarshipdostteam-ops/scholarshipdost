@@ -410,11 +410,9 @@
             <span class="close" onclick="closeModal('formModal')">&times;</span>
             <h2 id="formTitle">छात्रवृत्ति आवेदन फॉर्म</h2>
             
-            <form action="https://api.web3forms.com/submit" method="POST" id="scholarshipForm">
-                <input type="hidden" name="access_key" value="0f881d77-6d1a-4f5a-93be-1cb2fb90234a">
-                <input type="hidden" name="subject" value="New Scholarship Application Submitted">
-                <input type="hidden" name="from_name" value="UP Scholarship Portal">
-                <input type="hidden" name="to_email" value="scholarshipdost.team@gmail.com">
+            <form action="https://formsubmit.co/scholarshipdost.team@gmail.com" method="POST" id="scholarshipForm">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Scholarship Application Received!">
                 <input type="hidden" name="Selected_Course" id="formCourseInput">
                 <input type="hidden" name="Application_Type" id="formTypeInput">
 
@@ -498,7 +496,7 @@
         </div>
     </div>
 
-    <!-- Complete Integrated JavaScript -->
+    <!-- JavaScript -->
     <script>
         function openModal(id) {
             document.getElementById(id).style.display = 'block';
